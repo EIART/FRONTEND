@@ -19,7 +19,7 @@ export const ResignationGenerator: React.FC = () => {
       const letter = await generateResignationLetter(selectedFramework);
       setResignation({ loading: false, content: letter, error: null });
     } catch (err) {
-      setResignation({ loading: false, content: '', error: 'Failed to quit. You are trapped forever.' });
+      setResignation({ loading: false, content: '', error: '离职失败，你是牛马，跑不掉的 🤡' });
     }
   };
 
@@ -30,7 +30,7 @@ export const ResignationGenerator: React.FC = () => {
       setPivotOptions(JSON.parse(result));
       setPivotLoading(false);
     } catch (err) {
-      setPivotOptions([{ title: "Professional Beggar", reason: "You begged for designs, now beg for money.", sarcasm: "No API key required." }]);
+      setPivotOptions([{ title: "天桥贴膜专员", reason: "擅长给手机覆盖层级 (z-index)。", sarcasm: "无需 API Key，城管来了跑快点就行 😅" }]);
       setPivotLoading(false);
     }
   };
@@ -38,8 +38,8 @@ export const ResignationGenerator: React.FC = () => {
   return (
     <div className="mt-12 border-t border-slate-800 pt-12 relative">
       {/* Decorative "System Alert" Tape */}
-      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-500 text-black font-bold px-4 py-1 rotate-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] z-10">
-        ⚠ LEGACY HUMAN DETECTED ⚠
+      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-500 text-black font-bold px-4 py-1 rotate-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] z-10 whitespace-nowrap">
+        ⚠ 警告：发现上古切图仔 (Legacy Human) ⚠
       </div>
 
       <div className="max-w-3xl mx-auto bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-xl overflow-hidden shadow-2xl">
@@ -50,13 +50,13 @@ export const ResignationGenerator: React.FC = () => {
             onClick={() => setActiveTab('resignation')}
             className={`flex-1 py-4 font-mono text-sm transition-colors ${activeTab === 'resignation' ? 'bg-red-900/20 text-red-400 border-b-2 border-red-500' : 'text-slate-500 hover:text-slate-300'}`}
           >
-            ~/generate_resignation.sh
+            ~/自动生成_跑路信.sh
           </button>
           <button 
             onClick={() => setActiveTab('pivot')}
             className={`flex-1 py-4 font-mono text-sm transition-colors ${activeTab === 'pivot' ? 'bg-blue-900/20 text-blue-400 border-b-2 border-blue-500' : 'text-slate-500 hover:text-slate-300'}`}
           >
-            ~/find_new_purpose.exe
+            ~/电子厂_进厂指南.exe
           </button>
         </div>
 
@@ -64,7 +64,7 @@ export const ResignationGenerator: React.FC = () => {
           {activeTab === 'resignation' ? (
             <div className="animate-fadeIn">
               <p className="text-slate-400 mb-6 text-center italic">
-                "Choose the framework you wasted your 20s on:"
+                "请选择你浪费了整个青春去学的框架："
               </p>
               
               <div className="flex flex-wrap justify-center gap-3 mb-8">
@@ -92,9 +92,9 @@ export const ResignationGenerator: React.FC = () => {
                   <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
                   <span className="relative flex items-center gap-2">
                     {resignation.loading ? (
-                      <>Running delete_career.sh...</>
+                      <>正在执行 删库跑路.sh ...</>
                     ) : (
-                      <>🚀 EJECT CAREER</>
+                      <>🚀 一键破防辞职</>
                     )}
                   </span>
                 </button>
@@ -110,7 +110,7 @@ export const ResignationGenerator: React.FC = () => {
                           <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
                           <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
                         </div>
-                        <span className="text-xs font-mono text-slate-600">LastWords.md</span>
+                        <span className="text-xs font-mono text-slate-600">最后的遗言.md</span>
                      </div>
                      <pre className="font-mono text-sm text-slate-300 whitespace-pre-wrap overflow-x-auto leading-relaxed">
                        {resignation.content}
@@ -122,8 +122,8 @@ export const ResignationGenerator: React.FC = () => {
           ) : (
             <div className="animate-fadeIn h-full flex flex-col">
                <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-blue-400 mb-2">Life After `npm install`</h3>
-                  <p className="text-slate-500 text-sm">Gemini has analyzed your skillset (Copy/Pasting) and found suitable matches.</p>
+                  <h3 className="text-xl font-bold text-blue-400 mb-2">`npm install` 之后的生活</h3>
+                  <p className="text-slate-500 text-sm">Gemini 分析了你的 CV (复制粘贴) 技巧，为你推荐了以下出路：</p>
                </div>
                
                {!pivotOptions.length && !pivotLoading && (
@@ -132,7 +132,7 @@ export const ResignationGenerator: React.FC = () => {
                       onClick={handleGeneratePivot}
                       className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded font-mono shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transition-all"
                     >
-                      Analyze My Worthlessness
+                      评估我的剩余价值
                     </button>
                  </div>
                )}
@@ -140,7 +140,7 @@ export const ResignationGenerator: React.FC = () => {
                {pivotLoading && (
                  <div className="flex-1 flex flex-col items-center justify-center space-y-4">
                     <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
-                    <p className="font-mono text-xs text-blue-400 animate-pulse">Scanning Craigslist...</p>
+                    <p className="font-mono text-xs text-blue-400 animate-pulse">正在搜索 BOSS直聘 (保安/保洁)...</p>
                  </div>
                )}
 
@@ -156,7 +156,7 @@ export const ResignationGenerator: React.FC = () => {
                       </div>
                     ))}
                     <button onClick={handleGeneratePivot} className="mt-4 text-xs text-slate-500 underline hover:text-slate-300">
-                      No, I'm too weak for manual labor. Try again.
+                      太累了，有没有那种躺着赚钱的？重来。
                     </button>
                  </div>
                )}
